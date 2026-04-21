@@ -10,62 +10,20 @@
 <link rel="icon" href="Icon.PNG" type="image/png">   
 <style>
 
-
-
 body {
-    /* Keeps the gradient and image */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("bg.JPG");
-    
-    /* FIX 1: Ensures the body is at least as tall as the screen */
-    min-height: 50vh; 
-    
-    /* FIX 2: Keeps the background from moving when you scroll */
+    min-height: 100vh; 
     background-attachment: fixed; 
-
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
     font-family: Arial, sans-serif;
     color: white;
-    margin: 0; /* Removes default browser padding */
-
- }
-h1 { margin-bottom: 5px; margin-top: 120px; }
-.section { margin: 15px 0; }
-label { display: block; margin: 8px 0 3px 0; font-weight: normal; }
-input[type="text"], input[type="number"] { padding: 5px; width: 120px; text-align: center; font-size: 16px; height:12px; }
-button { padding: 8px 16px; font-size: 16px; margin-top: 15px; cursor: pointer; }
-        
-    
-
-.button-container {
-    display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    align-items: center;    /* Center them horizontally */
-    justify-content: center;
-    width: 100%;
-    margin-top: 120px;      /* Adjust based on your header height */
+    margin: 0;
 }
 
-.button-container button {
-    width: 200px;           /* Optional: Makes all buttons the same width */
-    margin: 10px 0;         /* Spacing between buttons */
-    border-radius: 20px;    /* Matches the pill-shape in your screenshot */
-    border: none;
-    background-color: white;
-    color: black;
-    padding: 12px 24px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.button-container button:hover {
-    transform: scale(1.05); /* Slight pop effect on hover */
-}
-
-
+/* TOP BAR STYLES */
 #topBar {
     display: flex;
     align-items: center;
@@ -81,169 +39,157 @@ button { padding: 8px 16px; font-size: 16px; margin-top: 15px; cursor: pointer; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 999;
 }
+
 #logoGroup {
-    position: fixed;
-    top: 15px;
-    left: 15px; 
-    padding: 10px 20px;
-    background: rgba(255,255,255,0.75);
-    border-radius: 40px;
-    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
-    gap: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-#topbarTitle { 
-    position: absolute;
-    left: 49.2%;
-    transform: translateX(-50%);
-    font-weight: bold; 
-    font-size: 30px; 
-    color: #000; 
+    gap: 15px;
+    background: rgba(255,255,255,0.8);
+    padding: 8px 15px;
+    border-radius: 30px;
 }
 
 #menuContainer {
-    position: absolute;
-    top: 10px;    
-    right: 50px;  
-    display: flex;
-    align-items: center;
+    position: relative;
+    margin-right: 40px;
 }
+
 #menuDropdown {
     display: none;
     position: absolute;
     right: 0;
-    top: 40px;
+    top: 45px;
     background: rgba(255,255,255,0.9);
     border-radius: 6px;
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     text-align: left;
     min-width: 150px;
-    z-index: 1000;
 }
-#result, #message { margin-top:10px; font-size:18px; font-weight:bold; }
 
+/* NEW: TEAM GRID STYLES */
+.main-content {
+    padding-top: 130px; /* Space for the fixed top bar */
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-@media (max-width: 600px) {
-    #topBar {
-        height: 45px; 
-        flex-direction: row; 
-        justify-content: space-between;
-        padding: 5px 10px;
-    }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Side by side */
+    gap: 20px;
+    padding: 20px;
+}
 
-    #logoGroup {
-        position: static;
-        width: auto;
-        padding: 5px 10px;
-        gap: 8px;
-        flex-shrink: 1;
-        justify-content: flex-start;
-    }
+.profile-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
 
-    #logoGroup img {
-        height: 20px;   
-        width: auto;    
-    }
+.profile-card:hover {
+    transform: translateY(-10px);
+}
 
-    #menuContainer {
-        flex-shrink: 1;
-        justify-content: flex-end;
-        position: absolute;
-        top: 0.5px;    
-        right: 25px;  
-        display: flex;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-    }
-    
-    #menuContainer button {
-        padding: 3px 6px;
-        font-size: 12px;
-    }
+.profile-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
 
+.card-label {
+    background-color: #568ec5;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
 
-    body {
-        margin-top: 55px;
-    }
+.card-label .name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
 
-    h1 {
-        margin-top: 60px;
-        font-size: 24px;
-        
-    }
+/* BOT BUTTON STYLE */
+.bot-container {
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
 
-    input[type="text"], input[type="number"] { 
-        width: 120px;
-    }
-    #markah {
-        width: 120px !important;
-        max-width: 120px;
-    }
+.bot-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
 
-    #tutorialModal > div {
-        width: 95% !important;
-        max-width: 400px !important;
+/* RESPONSIVE: Stack cards on mobile */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 40px;
     }
-}    
-    
-  
+    #topBar { height: 60px; }
+}
 </style>
-
-
-
+</head>
 
 <body>
 
 <div id="topBar">
     <div id="logoGroup">
-        <img src="MRSM.png" style="height:38px;">
-        <img src="IMG_1460.webp" style="height:33px;">
+        <img src="MRSM.png" style="height:30px;">
+        <img src="IMG_1460.webp" style="height:25px;">
     </div>
     <div id="menuContainer">
-        <button id="menuButton" style="
-            padding: 8px 14px;
-            background: rgba(255,255,255,0.6);
-            border: none;
-            border-radius: 6px;
-            backdrop-filter: blur(6px);
-            cursor: pointer;
-            font-weight: normal;
-        ">Menu ⋮</button>
+        <button id="menuButton" style="padding: 8px 14px; background: rgba(255,255,255,0.6); border: none; border-radius: 6px; cursor: pointer;">Menu ⋮</button>
         <div id="menuDropdown">
-            <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeJATuW1pIzKaQjklqg8FY0KBRCVHVKNHlX9sUPhS4mX-17Ag/viewform?usp=dialog','_blank')" style="display:block; width:100%; margin-bottom:5px;">Feedback 📝</button>
-            <button onclick="document.getElementById('tutorialModal').style.display='flex'" style="display:block; width:100%;">Tutorial 🎥</button>
+            <button onclick="window.open('https://docs.google.com/forms/...','_blank')" style="display:block; width:100%; margin-bottom:5px;">Feedback 📝</button>
         </div>
     </div>
 </div>
 
+<div class="main-content">
+    <h1>PNG Calculator</h1>
 
+    <div class="team-grid">
+        
+        <div class="profile-card" onclick="location.href='form4/index.html'">
+            <img src="waldan_photo.jpg" alt="Waldannnnn">
+            <div class="card-label">
+                <div class="name">Waldannnnn</div>
+            </div>
+        </div>
 
-<h1>PNG Calculator</h1>
-<br>
-<br>
-<br>
-<div class="button container">
+        <div class="profile-card" onclick="location.href='form5/index.html'">
+            <img src="azriff_photo.jpg" alt="Azriff">
+            <div class="card-label">
+                <div class="name">Azriff</div>
+            </div>
+        </div>
 
+        <div class="profile-card" onclick="location.href='form5/index.html'">
+            <img src="adlan_photo.jpg" alt="Adlannn">
+            <div class="card-label">
+                <div class="name">Adlannn</div>
+            </div>
+        </div>
 
-<button onclick="location.href='form4/index.html'" style="display:block; margin:20px auto; padding:20px 148px; font-size:16px; cursor:pointer;">
-Waldannnnn
-</button>
+    </div>
 
-<button onclick="location.href='form5/index.html'" style="display:block; margin:20px auto; padding:20px 148px; font-size:16px; cursor:pointer;">
-Azriff
-</button>
-
-<button onclick="location.href='form5/index.html'" style="display:block; margin:20px auto; padding:20px 120px; font-size:16px; cursor:pointer;">
-Adlannn
-</button>   
-
-<button onclick="location.href='https://t.me/pngcalculator_bot'" style="display:block; margin:20px auto; padding:20px 120px; font-size:16px; cursor:pointer;">
-PNG Calculator Bot
-</button>    
+    <div class="bot-container">
+        <button class="bot-btn" onclick="location.href='https://t.me/pngcalculator_bot'">
+            PNG Calculator Bot
+        </button>
+    </div>
 </div>
 
 <script>
@@ -254,14 +200,6 @@ window.onclick = function(e) {
   if (!document.getElementById("menuContainer").contains(e.target)) {
     menuDropdown.style.display = "none";
   }
-}
-
-
-window.onload = () => { document.getElementById("tutorialModal").style.display = "flex"; }
-document.getElementById("closeTutorial").onclick = () => {
-    let video = document.getElementById("tutoVideo");
-    video.pause(); video.currentTime = 0;
-    document.getElementById("tutorialModal").style.display = "none";
 }
 </script>
 
