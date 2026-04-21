@@ -10,53 +10,61 @@
 <link rel="icon" href="Icon.PNG" type="image/png">   
 <style>
 
+
+
 body {
+    /* Keeps the gradient and image */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("bg.JPG");
-    min-height: 100vh; 
+    
+    /* FIX 1: Ensures the body is at least as tall as the screen */
+    min-height: 50vh; 
+    
+    /* FIX 2: Keeps the background from moving when you scroll */
     background-attachment: fixed; 
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
     font-family: Arial, sans-serif;
     color: white;
-    margin: 0;
-}
+    margin: 0; /* Removes default browser padding */
 
-/* Container to handle centering and layout */
+ }
+h1 { margin-bottom: 5px; margin-top: 120px; }
+.section { margin: 15px 0; }
+label { display: block; margin: 8px 0 3px 0; font-weight: normal; }
+input[type="text"], input[type="number"] { padding: 5px; width: 120px; text-align: center; font-size: 16px; height:12px; }
+button { padding: 8px 16px; font-size: 16px; margin-top: 15px; cursor: pointer; }
+        
+    
+
 .button-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;    /* Center them horizontally */
     justify-content: center;
     width: 100%;
-    margin-top: 140px; /* Pushes content below the fixed topBar */
-}
-
-.button-container h1 {
-    margin-bottom: 20px;
-    font-size: 32px;
+    margin-top: 120px;      /* Adjust based on your header height */
 }
 
 .button-container button {
-    width: 220px;           
-    margin: 10px 0;         
-    border-radius: 30px;    
+    width: 200px;           /* Optional: Makes all buttons the same width */
+    margin: 10px 0;         /* Spacing between buttons */
+    border-radius: 20px;    /* Matches the pill-shape in your screenshot */
     border: none;
     background-color: white;
     color: black;
-    padding: 14px 24px;
-    font-size: 16px;
+    padding: 12px 24px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
 }
 
 .button-container button:hover {
-    transform: scale(1.05);
-    background-color: #f0f0f0;
+    transform: scale(1.05); /* Slight pop effect on hover */
 }
+
 
 #topBar {
     display: flex;
@@ -73,105 +81,81 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 999;
 }
-
 #logoGroup {
+    position: fixed;
+    top: 15px;
+    left: 15px; 
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 40px;
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     gap: 18px;
-    background: rgba(255,255,255,0.8);
-    padding: 10px 20px;
-    border-radius: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+#topbarTitle { 
+    position: absolute;
+    left: 49.2%;
+    transform: translateX(-50%);
+    font-weight: bold; 
+    font-size: 30px; 
+    color: #000; 
 }
 
 #menuContainer {
-    position: relative;
-    margin-right: 20px;
+    position: absolute;
+    top: 10px;    
+    right: 50px;  
+    display: flex;
+    align-items: center;
 }
-
-#menuButton {
-    padding: 8px 14px;
-    background: rgba(255,255,255,0.6);
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
 #menuDropdown {
     display: none;
     position: absolute;
     right: 0;
-    top: 45px;
-    background: white;
+    top: 40px;
+    background: rgba(255,255,255,0.9);
     border-radius: 6px;
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: left;
     min-width: 150px;
     z-index: 1000;
 }
+#result, #message { margin-top:10px; font-size:18px; font-weight:bold; }
 
-#menuDropdown button {
-    color: black;
-    width: 100%;
-    margin: 5px 0;
-    padding: 8px;
-    background: #f9f9f9;
-    border: 1px solid #eee;
-}
 
 @media (max-width: 600px) {
-    #topBar { height: 60px; }
-    .button-container { margin-top: 100px; }
-    #logoGroup img { height: 25px !important; }
-}
-</style>
-</head>
-<body>
+    #topBar {
+        height: 45px; 
+        flex-direction: row; 
+        justify-content: space-between;
+        padding: 5px 10px;
+    }
 
-<div id="topBar">
-    <div id="logoGroup">
-        <img src="MRSM.png" style="height:38px;">
-        <img src="IMG_1460.webp" style="height:33px;">
-    </div>
-    <div id="menuContainer">
-        <button id="menuButton">Menu ⋮</button>
-        <div id="menuDropdown">
-            <button onclick="window.open('https://docs.google.com/forms/d/e/...','_blank')">Feedback 📝</button>
-            <button onclick="alert('Tutorial coming soon!')">Tutorial 🎥</button>
-        </div>
-    </div>
-</div>
+    #logoGroup {
+        position: static;
+        width: auto;
+        padding: 5px 10px;
+        gap: 8px;
+        flex-shrink: 1;
+        justify-content: flex-start;
+    }
 
-<div class="button-container">
-    <h1>PNG Calculator</h1>
-    
-    <button onclick="location.href='lowerform/index.html'">
-        Lower Form (F1-F3)
-    </button>
+    #logoGroup img {
+        height: 20px;   
+        width: auto;    
+    }
 
-    <button onclick="location.href='form4/index.html'">
-        Form 4
-    </button>
-
-    <button onclick="location.href='form5/index.html'">
-        Form 5
-    </button>
-</div>
-
-<script>
-const menuButton = document.getElementById("menuButton");
-const menuDropdown = document.getElementById("menuDropdown");
-
-menuButton.onclick = (e) => {
-    e.stopPropagation();
-    menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block"; 
-}
-
-window.onclick = function(e) {
-  if (!menuContainer.contains(e.target)) {
-    menuDropdown.style.display = "none";
-  }
-}
-</script>
-
-</body>
-</html>
+    #menuContainer {
+        flex-shrink: 1;
+        justify-content: flex-end;
+        position: absolute;
+        top: 0.5px;    
+        right: 25px;  
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
