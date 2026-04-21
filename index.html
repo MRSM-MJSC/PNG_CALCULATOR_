@@ -9,14 +9,24 @@
 <meta property="og:description" content="TRACK your grade and SET your academic goals">    
 <link rel="icon" href="Icon.PNG" type="image/png">   
 <style>
+
 body {
+    /* Keeps the gradient and image */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("bg.JPG");
+    
+    /* FIX 1: Ensures the body is at least as tall as the screen */
+    min-height: 200vh; 
+    
+    /* FIX 2: Keeps the background from moving when you scroll */
+    background-attachment: fixed; 
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
     font-family: Arial, sans-serif;
     color: white;
+    margin: 0; /* Removes default browser padding */
 }
 
 
