@@ -65,7 +65,30 @@ button { padding: 8px 16px; font-size: 16px; margin-top: 15px; cursor: pointer; 
     transform: scale(1.05); /* Slight pop effect on hover */
 }
 
+.btn-glass {
+    /* 1. Semi-transparent background */
+    background: rgba(255, 255, 255, 0.15); 
+    
+    /* 2. The 'Frosted' effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    
+    /* 3. The thin white border (The 'Rim' of the glass) */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    /* 4. Subtle shadow for depth */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+    /* 5. Smooth transition for hover */
+    transition: all 0.3s ease;
+    
+    color: white; /* Change text to white for contrast */
+}
 
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px); /* Lifts the button slightly */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
     
@@ -285,3 +308,4 @@ document.getElementById("closeTutorial").onclick = () => {
 
 </body>
 </html>
+
