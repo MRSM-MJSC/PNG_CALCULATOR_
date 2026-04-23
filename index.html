@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNG Calculator V2.0</title>
+<meta property="og:image" content="Icon.PNG">
+<meta property="og:title" content="MRSM PNG Calculator">
+<meta property="og:description" content="TRACK your grade and SET your academic goals">    
+<link rel="icon" href="Icon.PNG" type="image/png">   
+<style>
+
+
+
+body {
+   
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("bg.JPG");
+    
+ 
+    min-height: 50vh; 
+    
+  
+    background-attachment: fixed; 
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0; 
+
+ }
+h1 { margin-bottom: 5px; margin-top: 120px; }
+.section { margin: 15px 0; }
+label { display: block; margin: 8px 0 3px 0; font-weight: normal; }
+input[type="text"], input[type="number"] { padding: 5px; width: 120px; text-align: center; font-size: 16px; height:12px; }
+button { padding: 8px 16px; font-size: 16px; margin-top: 15px; cursor: pointer; }
+        
+    
+
+.button-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    width: 100%;
+    margin-top: 120px;      
+}
+
+.button-container button {
+    width: 200px;           
+    margin: 10px 0;         
+    border-radius: 20px;    
+    border: none;
+    background-color: white;
+    color: black;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.button-container button:hover {
+    transform: scale(1.05); 
+}
+
+.btn-glass {
+    
+    background: rgba(255, 255, 255, 0.15); 
+    
+  
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    
+ 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+  
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+ 
+    transition: all 0.3s ease;
+    
+    color: white; 
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+    
+#topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+#logoGroup {
+    position: fixed;
+    top: 15px;
+    left: 15px; 
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 40px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+#topbarTitle { 
+    position: absolute;
+    left: 49.2%;
+    transform: translateX(-50%);
+    font-weight: bold; 
+    font-size: 30px; 
+    color: #000; 
+}
+
+#menuContainer {
+    position: absolute;
+    top: 10px;    
+    right: 50px;  
+    display: flex;
+    align-items: center;
+}
+#menuDropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: left;
+    min-width: 150px;
+    z-index: 1000;
+}
+#result, #message { margin-top:10px; font-size:18px; font-weight:bold; }
+
+
+@media (max-width: 600px) {
+    #topBar {
+        height: 45px; 
+        flex-direction: row; 
+        justify-content: space-between;
+        padding: 5px 10px;
+    }
+
+    #logoGroup {
+        position: static;
+        width: auto;
+        padding: 5px 10px;
+        gap: 8px;
+        flex-shrink: 1;
+        justify-content: flex-start;
+    }
+
+    #logoGroup img {
+        height: 20px;   
+        width: auto;    
+    }
+
+    #menuContainer {
+        flex-shrink: 1;
+        justify-content: flex-end;
+        position: absolute;
+        top: 0.5px;    
+        right: 25px;  
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #menuContainer button {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+
+
+    body {
+        margin-top: 55px;
+    }
+
+    h1 {
+        margin-top: 60px;
+        font-size: 24px;
+        
+    }
+
+    input[type="text"], input[type="number"] { 
+        width: 120px;
+    }
+    #markah {
+        width: 120px !important;
+        max-width: 120px;
+    }
+
+    #tutorialModal > div {
+        width: 95% !important;
+        max-width: 400px !important;
+    }
+}    
+    
+  
+</style>
+
+
+
+
+<body>
+
+<div id="topBar">
+    <div id="logoGroup">
+        <img src="MRSM.png" style="height:38px;">
+        <img src="IMG_1460.webp" style="height:33px;">
+    </div>
+    <div id="menuContainer">
+        <button id="menuButton" style="
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.6);
+            border: none;
+            border-radius: 6px;
+            backdrop-filter: blur(6px);
+            cursor: pointer;
+            font-weight: normal;
+        ">Menu ⋮</button>
+        <div id="menuDropdown">
+            <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeJATuW1pIzKaQjklqg8FY0KBRCVHVKNHlX9sUPhS4mX-17Ag/viewform?usp=dialog','_blank')" style="display:block; width:100%; margin-bottom:5px;">Feedback 📝</button>
+            <button onclick="document.getElementById('tutorialModal').style.display='flex'" style="display:block; width:100%;">Tutorial 🎥</button>
+        </div>
+    </div>
+</div>
+
+
+
+<h1>PNG Calculator</h1>
+<br>
+
+<div class="button container">
+<button class='btn-glass' onclick="location.href='lowerform/index.html'" style="display:block; margin:20px auto; padding:20px 100px; font-size:16px; cursor:pointer; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: white;">
+📍Lower Form (F1-F3)
+</button>
+
+<button class='btn-glass' onclick="location.href='form4/index.html'" 
+    style="display:block; margin:20px auto; padding:20px 148px; font-size:16px; cursor:pointer; 
+    border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: white;">
+📍Form 4
+</button>
+
+
+<button class='btn-glass' onclick="location.href='form5/index.html'" style="display:block; margin:20px auto; padding:20px 148px; font-size:16px; cursor:pointer; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: white;">
+📍Form 5
+</button>
+
+<button class='btn-glass' onclick="window.open('https://sites.google.com/view/info-unit-ujian-bpm/sistem-png-mrsm?authuser=0', '_blank')" 
+        style="display:block; margin:20px auto; padding:20px 120px; font-size:16px; cursor:pointer; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: white;">
+  📍All About GPA
+</button>
+  
+
+<button class='btn-glass' onclick="location.href='contact/index.html'" style="display:block; margin:20px auto; padding:20px 128px; font-size:16px; cursor:pointer; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: white;">
+📍Contact Us 
+</button>    
+</div>
+
+<div id="tutorialModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter: blur(3px); justify-content:center; align-items:center;">
+<div style="background:white; padding:15px; border-radius:10px; width:90%; max-width:500px; text-align:center;">
+<h3>User Tutorial</h3>
+<video id="tutoVideo" width="100%" controls >
+<source src="Tutorial.mp4" type="video/mp4">
+</video>
+<br><br>
+<button id="closeTutorial" style="padding:7px 18px; background:#ff4f4f; border:none; border-radius:5px; color:white; cursor:pointer;">Close ✖️</button>
+</div></div>
+
+    
+<script>
+const menuButton = document.getElementById("menuButton");
+const menuDropdown = document.getElementById("menuDropdown");
+menuButton.onclick = () => { menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block"; }
+window.onclick = function(e) {
+  if (!document.getElementById("menuContainer").contains(e.target)) {
+    menuDropdown.style.display = "none";
+  }
+}
+
+
+window.onload = () => { document.getElementById("tutorialModal").style.display = "flex"; }
+document.getElementById("closeTutorial").onclick = () => {
+    let video = document.getElementById("tutoVideo");
+    video.pause(); video.currentTime = 0;
+    document.getElementById("tutorialModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
