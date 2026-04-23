@@ -307,6 +307,49 @@ document.getElementById("closeTutorial").onclick = () => {
     document.getElementById("tutorialModal").style.display = "none";
 }
 </script>
+<a href="../index.html" class="floating-home">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+    </svg>
+    <span>Back</span>
+</a>
+
+<style>
+.floating-home {
+    /* Kedudukan */
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    
+    /* Rekaan Visual */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Warna lutsinar */
+    backdrop-filter: blur(10px); /* Kesan glassmorphism */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+    transition: all 0.3s ease;
+    z-index: 1000; /* Supaya butang sentiasa di atas elemen lain */
+}
+
+.floating-home:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px); /* Efek melompat sedikit */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.floating-home svg {
+    width: 20px;
+    height: 20px;
+}
+</style>
 
 </body>
 </html>
